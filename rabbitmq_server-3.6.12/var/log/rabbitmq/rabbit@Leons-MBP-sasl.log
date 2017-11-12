@@ -1,0 +1,275 @@
+
+=CRASH REPORT==== 25-Oct-2017::15:47:22 ===
+  crasher:
+    initial call: rabbit_disk_monitor:init/1
+    pid: <0.102.0>
+    registered_name: rabbit_disk_monitor
+    exception exit: {unparseable,[]}
+      in function  gen_server:terminate/7 (gen_server.erl, line 804)
+    ancestors: [rabbit_disk_monitor_sup,rabbit_sup,<0.88.0>]
+    messages: []
+    links: [<0.101.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 14889
+  neighbours:
+
+=SUPERVISOR REPORT==== 25-Oct-2017::15:47:22 ===
+     Supervisor: {local,rabbit_disk_monitor_sup}
+     Context:    child_terminated
+     Reason:     {unparseable,[]}
+     Offender:   [{pid,<0.102.0>},
+                  {name,rabbit_disk_monitor},
+                  {mfargs,{rabbit_disk_monitor,start_link,[50000000]}},
+                  {restart_type,{transient,1}},
+                  {shutdown,30000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 25-Oct-2017::15:47:39 ===
+  crasher:
+    initial call: rabbit_reader:init/4
+    pid: <0.372.0>
+    registered_name: []
+    exception throw: {not_found,ets_compat}
+      in function  code_version:get_object_code/1 (src/code_version.erl, line 117)
+      in call from code_version:get_abs_code/1 (src/code_version.erl, line 110)
+      in call from code_version:update/1 (src/code_version.erl, line 70)
+      in call from ets_compat:update_element/3 (src/ets_compat.erl, line 82)
+      in call from rabbit_core_metrics:connection_closed/1 (src/rabbit_core_metrics.erl, line 120)
+      in call from rabbit_reader:'-start_connection/4-after$^0/0-0-'/1 (src/rabbit_reader.erl, line 417)
+      in call from rabbit_reader:start_connection/4 (src/rabbit_reader.erl, line 389)
+    ancestors: [<0.370.0>,<0.332.0>,<0.331.0>,<0.330.0>,rabbit_sup,<0.88.0>]
+    messages: [{'EXIT',#Port<0.12762>,normal}]
+    links: [<0.370.0>]
+    dictionary: [{credit_blocked,[]},
+                  {credit_flow_default_credit,{400,200}},
+                  {process_name,
+                      {rabbit_reader,
+                          <<"127.0.0.1:49911 -> 127.0.0.1:5672">>}}]
+    trap_exit: true
+    status: running
+    heap_size: 1598
+    stack_size: 27
+    reductions: 4566
+  neighbours:
+
+=SUPERVISOR REPORT==== 25-Oct-2017::15:47:39 ===
+     Supervisor: {<0.370.0>,rabbit_connection_sup}
+     Context:    child_terminated
+     Reason:     {not_found,ets_compat}
+     Offender:   [{pid,<0.372.0>},
+                  {name,reader},
+                  {mfargs,
+                      {rabbit_reader,start_link,
+                          [<0.371.0>,
+                           {acceptor,{0,0,0,0,0,0,0,0},5672},
+                           #Port<0.12762>]}},
+                  {restart_type,intrinsic},
+                  {shutdown,30000},
+                  {child_type,worker}]
+
+
+=SUPERVISOR REPORT==== 25-Oct-2017::15:47:39 ===
+     Supervisor: {<0.370.0>,rabbit_connection_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.372.0>},
+                  {name,reader},
+                  {mfargs,
+                      {rabbit_reader,start_link,
+                          [<0.371.0>,
+                           {acceptor,{0,0,0,0,0,0,0,0},5672},
+                           #Port<0.12762>]}},
+                  {restart_type,intrinsic},
+                  {shutdown,30000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 25-Oct-2017::15:48:18 ===
+  crasher:
+    initial call: gen:init_it/7
+    pid: <0.311.0>
+    registered_name: msg_store_persistent
+    exception exit: {{badmatch,
+                         {error,
+                             {file_error,
+                                 "/Users/leondo/Desktop/rabbitmq_server-3.6.12/var/lib/rabbitmq/mnesia/rabbit@Leons-MBP/msg_store_persistent/file_summary.ets",
+                                 enoent}}},
+                     [{rabbit_msg_store,store_file_summary,2,
+                          [{file,"src/rabbit_msg_store.erl"},{line,1587}]},
+                      {rabbit_msg_store,terminate,2,
+                          [{file,"src/rabbit_msg_store.erl"},{line,999}]},
+                      {gen_server2,terminate,3,
+                          [{file,"src/gen_server2.erl"},{line,1156}]},
+                      {proc_lib,wake_up,3,
+                          [{file,"proc_lib.erl"},{line,247}]}]}
+      in function  gen_server2:terminate/3 (src/gen_server2.erl, line 1159)
+    ancestors: [rabbit_sup,<0.88.0>]
+    messages: [{'EXIT',<0.314.0>,normal}]
+    links: []
+    dictionary: [{random_seed,{3172,9814,20125}},{fhc_age_tree,{0,nil}}]
+    trap_exit: true
+    status: running
+    heap_size: 1598
+    stack_size: 27
+    reductions: 5892
+  neighbours:
+
+=SUPERVISOR REPORT==== 25-Oct-2017::15:48:18 ===
+     Supervisor: {local,rabbit_sup}
+     Context:    shutdown_error
+     Reason:     {{badmatch,
+                      {error,
+                          {file_error,
+                              "/Users/leondo/Desktop/rabbitmq_server-3.6.12/var/lib/rabbitmq/mnesia/rabbit@Leons-MBP/msg_store_persistent/file_summary.ets",
+                              enoent}}},
+                  [{rabbit_msg_store,store_file_summary,2,
+                       [{file,"src/rabbit_msg_store.erl"},{line,1587}]},
+                   {rabbit_msg_store,terminate,2,
+                       [{file,"src/rabbit_msg_store.erl"},{line,999}]},
+                   {gen_server2,terminate,3,
+                       [{file,"src/gen_server2.erl"},{line,1156}]},
+                   {proc_lib,wake_up,3,[{file,"proc_lib.erl"},{line,247}]}]}
+     Offender:   [{pid,<0.311.0>},
+                  {name,msg_store_persistent},
+                  {mfargs,
+                      {rabbit_msg_store,start_link,
+                          [msg_store_persistent,
+                           "/Users/leondo/Desktop/rabbitmq_server-3.6.12/var/lib/rabbitmq/mnesia/rabbit@Leons-MBP",
+                           [],
+                           {#Fun<rabbit_queue_index.2.91631177>,{start,[]}}]}},
+                  {restart_type,transient},
+                  {shutdown,30000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 25-Oct-2017::15:48:18 ===
+  crasher:
+    initial call: gen:init_it/7
+    pid: <0.308.0>
+    registered_name: msg_store_transient
+    exception exit: {{badmatch,
+                         {error,
+                             {file_error,
+                                 "/Users/leondo/Desktop/rabbitmq_server-3.6.12/var/lib/rabbitmq/mnesia/rabbit@Leons-MBP/msg_store_transient/file_summary.ets",
+                                 enoent}}},
+                     [{rabbit_msg_store,store_file_summary,2,
+                          [{file,"src/rabbit_msg_store.erl"},{line,1587}]},
+                      {rabbit_msg_store,terminate,2,
+                          [{file,"src/rabbit_msg_store.erl"},{line,999}]},
+                      {gen_server2,terminate,3,
+                          [{file,"src/gen_server2.erl"},{line,1156}]},
+                      {proc_lib,wake_up,3,
+                          [{file,"proc_lib.erl"},{line,247}]}]}
+      in function  gen_server2:terminate/3 (src/gen_server2.erl, line 1159)
+    ancestors: [rabbit_sup,<0.88.0>]
+    messages: [{'EXIT',<0.309.0>,normal}]
+    links: []
+    dictionary: [{credit_blocked,[]},
+                  {random_seed,{3172,9814,20125}},
+                  {fhc_age_tree,{0,nil}}]
+    trap_exit: true
+    status: running
+    heap_size: 1598
+    stack_size: 27
+    reductions: 5053
+  neighbours:
+
+=SUPERVISOR REPORT==== 25-Oct-2017::15:48:18 ===
+     Supervisor: {local,rabbit_sup}
+     Context:    shutdown_error
+     Reason:     {{badmatch,
+                      {error,
+                          {file_error,
+                              "/Users/leondo/Desktop/rabbitmq_server-3.6.12/var/lib/rabbitmq/mnesia/rabbit@Leons-MBP/msg_store_transient/file_summary.ets",
+                              enoent}}},
+                  [{rabbit_msg_store,store_file_summary,2,
+                       [{file,"src/rabbit_msg_store.erl"},{line,1587}]},
+                   {rabbit_msg_store,terminate,2,
+                       [{file,"src/rabbit_msg_store.erl"},{line,999}]},
+                   {gen_server2,terminate,3,
+                       [{file,"src/gen_server2.erl"},{line,1156}]},
+                   {proc_lib,wake_up,3,[{file,"proc_lib.erl"},{line,247}]}]}
+     Offender:   [{pid,<0.308.0>},
+                  {name,msg_store_transient},
+                  {mfargs,
+                      {rabbit_msg_store,start_link,
+                          [msg_store_transient,
+                           "/Users/leondo/Desktop/rabbitmq_server-3.6.12/var/lib/rabbitmq/mnesia/rabbit@Leons-MBP",
+                           undefined,
+                           {#Fun<rabbit_variable_queue.0.130150970>,ok}]}},
+                  {restart_type,transient},
+                  {shutdown,30000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 25-Oct-2017::16:47:08 ===
+  crasher:
+    initial call: rabbit_disk_monitor:init/1
+    pid: <0.183.0>
+    registered_name: rabbit_disk_monitor
+    exception exit: {unparseable,[]}
+      in function  gen_server:terminate/7 (gen_server.erl, line 804)
+    ancestors: [rabbit_disk_monitor_sup,rabbit_sup,<0.169.0>]
+    messages: []
+    links: [<0.182.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 1598
+    stack_size: 27
+    reductions: 768495
+  neighbours:
+
+=SUPERVISOR REPORT==== 25-Oct-2017::16:47:08 ===
+     Supervisor: {local,rabbit_disk_monitor_sup}
+     Context:    child_terminated
+     Reason:     {unparseable,[]}
+     Offender:   [{pid,<0.183.0>},
+                  {name,rabbit_disk_monitor},
+                  {mfargs,{rabbit_disk_monitor,start_link,[50000000]}},
+                  {restart_type,{transient,1}},
+                  {shutdown,30000},
+                  {child_type,worker}]
+
+
+=SUPERVISOR REPORT==== 25-Oct-2017::16:47:08 ===
+     Supervisor: {<0.28.0>,user_sup}
+     Context:    child_terminated
+     Reason:     eio
+     Offender:   [{pid,<0.29.0>},{mod,user_sup}]
+
+
+=CRASH REPORT==== 25-Oct-2017::16:47:08 ===
+  crasher:
+    initial call: supervisor_bridge:user_sup/1
+    pid: <0.28.0>
+    registered_name: []
+    exception exit: eio
+      in function  gen_server:terminate/7 (gen_server.erl, line 804)
+    ancestors: [kernel_sup,<0.10.0>]
+    messages: []
+    links: [<0.11.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 4185
+    stack_size: 27
+    reductions: 434
+  neighbours:
+
+=SUPERVISOR REPORT==== 25-Oct-2017::16:47:08 ===
+     Supervisor: {local,kernel_sup}
+     Context:    child_terminated
+     Reason:     eio
+     Offender:   [{pid,<0.28.0>},
+                  {name,user},
+                  {mfargs,{user_sup,start,[]}},
+                  {restart_type,temporary},
+                  {shutdown,2000},
+                  {child_type,supervisor}]
+
