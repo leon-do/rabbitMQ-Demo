@@ -1,14 +1,3 @@
-## how it works
-```
-  sender   == task   == producer
-
-  reciever == worker == consumer
-
-	  	         |-----------|	    |------> recieve1
-  send ----->|  queue1   |-----|
-	  	         |-----------|     |------> recieve2
-```
-
 ### install
     brew update
     brew install rabbitmq
