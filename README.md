@@ -1,4 +1,4 @@
-## Diagram
+## how it works
 ```
   sender   == task   == producer
 
